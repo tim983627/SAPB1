@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels1="clr-namespace:Notes.ViewModels"
+             Title="主管審核過帳"
+             x:Class="Notes.SirPosting">
+
+    <ContentPage.BindingContext>
+        <viewModels1:Posting/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout BackgroundColor="White">
+                <Label FontSize="3"/>
+                <Label Text="點選盤點單進行審核:" x:Name="N" FontSize="22"></Label>
+                <!--<Frame BackgroundColor="#829FDF" BorderColor="DarkSlateGray" Padding="0">
+                    <Grid Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="3.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="10,0,10,0" Text="盤點單" FontSize="21" Grid.Column="0"></Label>
+                        <Label Margin="10,0,10,0" Text="商品編號" FontSize="21" Grid.Column="1" ></Label>
+                        <Label Margin="10,0,10,0" Text="商品名稱" FontSize="21" Grid.Column="2" HorizontalTextAlignment="Center" ></Label>
+                    </Grid>
+                </Frame>-->
+                <!-- 表格內容 -->
+                <ListView ItemsSource="{Binding Data}" Margin="10" HasUnevenRows="True" HorizontalOptions="Center" HeightRequest="240" x:Name="Listview" ItemTapped="Listview_ItemTapped" SeparatorVisibility="Default" SeparatorColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0" HasShadow="False">
+                                    <Grid Padding="0" HeightRequest="50" BackgroundColor="#F0F0F0" Margin="3" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.5*" ></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" HorizontalOptions="End" >
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="FA5" Color="#B8B8B8" Glyph="&#xf0e0;"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <Label Text="編號: " FontSize="18" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                        <Label x:Name="Entry" Text="{Binding Entry,StringFormat=' {0 :F0}'}" FontSize="20"   Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" />
+                                        <Label x:Name="ItemCode" Text="{Binding ItemCode,StringFormat=' {0 :F0}'}" FontSize="22"   Grid.Column="2" HorizontalTextAlignment="End" VerticalOptions="Center"/>
+                                        <Label x:Name="ItemDesc" Text="{Binding ItemDesc,StringFormat=' {0 :F0}'}" FontSize="22" Grid.Column="3" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

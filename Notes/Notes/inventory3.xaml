@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels1="clr-namespace:Notes.ViewModels"
+             x:Class="Notes.inventory3"
+             Title="盤點B類商品"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" >
+    
+    <ContentPage.BindingContext>
+        <viewModels1:InventoryB/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout>
+                <!-- 相機生成、位置 -->
+
+                <zxing:ZXingScannerView IsScanning="True"                       
+                WidthRequest="300" HeightRequest="200"
+                VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
+                OnScanResult="ZXingScannerView_OnScanResult"/>
+                <!-- 表格的標頭 -->
+
+                <Frame BackgroundColor="#829FDF" BorderColor="DarkSlateGray" Padding="0">
+                    <Grid Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2.2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="10,0,10,0" Text="商品編號" FontSize="18" Grid.Column="0"></Label>
+                        <Label Margin="10,0,10,0" Text="批號" FontSize="18" Grid.Column="1" HorizontalTextAlignment="Center" ></Label>
+                        <Label Margin="10,0,10,0" Text="數量" FontSize="18" Grid.Column="2" HorizontalTextAlignment="End"></Label>
+                        <Label Margin="10,0,10,0" Text="清點" FontSize="18" Grid.Column="3" ></Label>
+                    </Grid>
+                </Frame>
+                <!-- 表格內容 -->
+                <ListView ItemsSource="{Binding Data}" HasUnevenRows="True" HeightRequest="240" x:Name="Listview" SeparatorVisibility="Default" SeparatorColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0" HasShadow="False">
+                                    <Grid Padding="0" HeightRequest="30" Margin="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="ItemCode" Text="{Binding ItemCode,StringFormat=' {0 :F0}'}" FontSize="20"  Grid.Column="1" VerticalOptions="Center" />
+                                        <Label x:Name="BatchNum" Text="{Binding BatchNumber,StringFormat=' {0 :F0}'}" FontSize="20"  Grid.Column="2" VerticalOptions="Center" />
+                                        <Label x:Name="Quantity" Text="{Binding Quantity}" FontSize="20" Grid.Column="3" VerticalOptions="Center"/>
+                                        <Label x:Name="Count" Text="{Binding Count}" FontSize="20" Grid.Column="4" TextColor="red" VerticalOptions="Center" />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!-- 條碼掃到的資訊 -->
+                <Button Text="送出" Clicked="gotoinventory" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5" ></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+        

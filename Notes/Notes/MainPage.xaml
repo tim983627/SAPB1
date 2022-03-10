@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModels1="clr-namespace:Notes"
+             Title="首頁"
+             x:Class="Notes.MainPage"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.BindingContext>
+        <viewModels1:Test/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="End">
+            <Image x:Name="Title" Source="SAP.png" />
+            <ListView ItemsSource="{Binding Data}" HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Success,StringFormat='連線狀態: {0 :F0}'}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Margin="25">
+                <Button Text="盤點商品" Clicked="gotoinventory" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#437aa6"  BorderRadius="50" ImageSource="inventory.png" ></Button>
+                <Button Text="主管審核過帳" Clicked="gotoposting" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#3b709a" BorderRadius="50" ImageSource="check.png" ></Button>
+                <Button Text="庫存調撥" Clicked="gotomove" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#32658e" BorderRadius="50" ImageSource="trans.png"></Button>
+                <Button Text="收貨" Clicked="gotoimport" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#25577e" BorderRadius="50" ImageSource="in.png"></Button>
+                <Button Text="發貨" Clicked="gotoexport" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#215177" BorderRadius="50" ImageSource="out.png"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

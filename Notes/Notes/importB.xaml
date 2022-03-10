@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Notes.ViewModels"
+             x:Class="Notes.importB"
+             Title="收貨B類商品"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" >
+    <ContentPage.BindingContext>
+        <viewModels:ImportB/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout>
+                <!-- 相機生成、位置 -->
+                <zxing:ZXingScannerView x:Name="Zxing" IsScanning="True"                      
+                WidthRequest="300" HeightRequest="200"
+                VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
+                OnScanResult="ZXingScannerView_OnScanResult"/>
+                <!-- 表格的標頭 -->
+
+                <Frame BackgroundColor="#829FDF" BorderColor="DarkSlateGray" Padding="0">
+                    <Grid Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="10,0,10,0" Text="商品編號" FontSize="18" Grid.Column="0"></Label>
+                        <Label Margin="10,0,10,0" Text="批號" FontSize="18" Grid.Column="1" ></Label>
+                        <Label Margin="10,0,10,0" Text="數量" FontSize="18" Grid.Column="2"  ></Label>
+                    </Grid>
+                </Frame>
+                <!-- 表格內容 -->
+                <ListView ItemsSource="{Binding Data}" HasUnevenRows="True" HeightRequest="240" x:Name="Listview" SeparatorVisibility="Default" SeparatorColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0" HasShadow="False">
+                                    <Grid Padding="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="ItemCode" Text="{Binding ItemCode,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="1" />
+                                        <Label x:Name="BatchNumber" Text="{Binding BatchNumber,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="2"/>
+                                        <Label x:Name="Count" Text="{Binding Count,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="3" TextColor="Red" HorizontalTextAlignment="Center" />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="送出" Clicked="gotoimport" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5" ></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+        

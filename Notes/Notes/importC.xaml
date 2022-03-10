@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  x:Class="Notes.importC"
+                  Title="收貨C類商品">
+    <Frame CornerRadius="15" Margin="15">
+        <StackLayout>
+            <Frame BackgroundColor="#829FDF" BorderColor="DarkSlateGray" Padding="0" CornerRadius="10"  >
+                <Grid Padding="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="10,0,10,0" Text="商品編號" FontSize="18" Grid.Column="0" HorizontalTextAlignment="Center"></Label>
+                    <Label Margin="10,0,10,0" Text="倉庫" FontSize="18" Grid.Column="1" HorizontalTextAlignment="Center"></Label>
+                    <Label Margin="10,0,10,0" Text="收貨數量" FontSize="18" Grid.Column="2" HorizontalTextAlignment="End"></Label>
+                </Grid>
+            </Frame>
+            <!-- 表格內容 -->
+            <Grid Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="ItemCode" Text="" FontSize="16"  Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label x:Name="WhsCode" Text=""  FontSize="16"  Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Entry x:Name="CountQty" Text="" FontSize="16"  Grid.Column="2" HorizontalTextAlignment="Center" TextColor="Red"/>
+            </Grid>
+            <Button Text="送出" Clicked="GoImport"  VerticalOptions="EndAndExpand" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+            <Button Text="返回" Clicked="Button_Clicked" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

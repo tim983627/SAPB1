@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels1="clr-namespace:Notes.ViewModels"
+             Title="審核C類商品過帳"
+             x:Class="Notes.SirPostingC">
+
+    <ContentPage.BindingContext>
+        <viewModels1:PostingC/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout>
+                <Label Text="" x:Name="N" FontSize="22"></Label>
+                <Frame BackgroundColor="#829FDF" BorderColor="DarkSlateGray" Padding="0">
+                    <Grid Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="10,0,10,0" Text="商品編號" FontSize="18" Grid.Column="0"></Label>
+                        <Label Margin="10,0,10,0" Text="倉庫數量" FontSize="18" Grid.Column="1" HorizontalTextAlignment="Center"></Label>
+                        <Label Margin="10,0,10,0" Text="盤點結果" FontSize="18" Grid.Column="2" HorizontalTextAlignment="Center"></Label>
+                    </Grid>
+                </Frame>
+                <!-- 表格內容 -->
+                <ListView ItemsSource="{Binding Data}" HasUnevenRows="True" HeightRequest="240" x:Name="Listview" SeparatorVisibility="Default" SeparatorColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0" HasShadow="False">
+                                    <Grid Padding="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3.5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3.5*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="ItemCode" Text="{Binding ItemCode,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="1" VerticalTextAlignment="Center"/>
+                                        <Label x:Name="CountQty" Text="{Binding CountQty,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        <Entry x:Name="InWhsQty" Text="{Binding InWhsQty,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="3" HorizontalTextAlignment="Center" TextColor="Red"/>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="過帳" Clicked="gotomainpage" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5" ></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

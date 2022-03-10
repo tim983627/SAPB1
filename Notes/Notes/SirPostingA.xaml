@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels1="clr-namespace:Notes.ViewModels"
+             Title="審核A類商品過帳"
+             x:Class="Notes.SirPostingA">
+    
+    <ContentPage.BindingContext>
+        <viewModels1:PostingA/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout>
+                <Label Text="" x:Name="N" FontSize="22"></Label>
+                <Grid Padding="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="已盤點:" Grid.Column="0" FontSize="16" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                    <Image  Source="GreenTick.png" Grid.Column="1" Margin="9"/>
+                    <Label Text="未盤點:" Grid.Column="2" FontSize="16" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                    <Image  Source="RedCross.png" Grid.Column="3" Margin="9"/>
+                    <Label Text="盤盈:" Grid.Column="4" FontSize="16" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                    <Image  Source="NewTick.png" Grid.Column="5"  Margin="9"/>
+                </Grid>
+                <Frame BackgroundColor="#829FDF" BorderColor="DarkSlateGray" Padding="0">
+                    <Grid Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="10,0,10,0" Text="商品編號" FontSize="18" Grid.Column="0"></Label>
+                        <Label Margin="10,0,10,0" Text="序號" FontSize="18" Grid.Column="1"></Label>
+                        <Label Margin="10,0,10,0" Text="結果" FontSize="18" Grid.Column="2" HorizontalTextAlignment="Start" ></Label>
+                    </Grid>
+                </Frame>
+                <!-- 表格內容 -->
+                <ListView ItemsSource="{Binding Data}" HasUnevenRows="True" HeightRequest="240" x:Name="Listview"  ItemSelected="Listview_ItemSelected" SeparatorVisibility="Default" SeparatorColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0" HasShadow="False">
+                                    <Grid Padding="0" Margin="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="ItemCode" Text="{Binding ItemCode,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="0"  />
+                                        <Label x:Name="DistNumber" Text="{Binding DistNumber,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="1"/>
+                                        <Image x:Name="Whether" Source="{Binding Whether}" Grid.Column="2"/>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="過帳" Clicked="gotomainpage" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5" ></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

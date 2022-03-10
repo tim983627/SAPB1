@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:viewModels="clr-namespace:Notes.ViewModels"
+                  x:Class="Notes.exportC"
+                  Title="發貨C類商品">
+    <ContentPage.BindingContext>
+        <viewModels:ExportC/>
+    </ContentPage.BindingContext>
+
+    <Frame CornerRadius="15" Margin="15">
+        <StackLayout>
+            <Frame BackgroundColor="#829FDF" BorderColor="DarkSlateGray" Padding="0" CornerRadius="10"  >
+                <Grid Padding="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="10,0,10,0" Text="商品編號" FontSize="18" Grid.Column="0" HorizontalTextAlignment="Center"></Label>
+                    <Label Margin="10,0,10,0" Text="庫存" FontSize="18" Grid.Column="1" HorizontalTextAlignment="Center"></Label>
+                    <Label Margin="10,0,10,0" Text="發貨數量" FontSize="18" Grid.Column="2" HorizontalTextAlignment="End"></Label>
+                </Grid>
+            </Frame>
+            <!-- 表格內容 -->
+            <ListView ItemsSource="{Binding Data}" HasUnevenRows="True" HeightRequest="240" x:Name="Listview" SeparatorVisibility="Default" SeparatorColor="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="0" HasShadow="False">
+                                <Grid Padding="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="ItemCode" Text="{Binding ItemCode,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label x:Name="InWhsQty" Text="{Binding InWhsQty,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Entry x:Name="CountQty" Text="{Binding CountQty,StringFormat=' {0 :F0}'}" FontSize="18"   Grid.Column="2" HorizontalTextAlignment="Center" TextColor="Red"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="送出" Clicked="GoExport" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+            <Button Text="返回" Clicked="Button_Clicked" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

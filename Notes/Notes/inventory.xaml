@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="輸入盤點單編號"
+             x:Class="Notes.inventory">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Entry  x:Name="DocNum" Placeholder="請輸入盤點單編號" Text="" />
+            <Button Text="送出" Clicked="gotoinventory2" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5" ></Button>
+            <Button Text="返回" Clicked="gotomainpage" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

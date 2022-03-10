@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="庫存調撥"
+             x:Class="Notes.Move">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry  x:Name="ItemCode" Placeholder="請輸入商品編號" Text="" />
+            <Picker  x:Name="WhsCode" Title="請選擇調撥自倉庫"/>
+            <Picker  x:Name="MoveWhsCode" Title="請選擇調撥至倉庫"  />
+            <Button Text="送出" Clicked="gotoimport" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5" ></Button>
+            <Button Text="返回" Clicked="gotomainpage" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

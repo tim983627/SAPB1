@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  x:Class="Notes.Loading">
+
+    <StackLayout WidthRequest="300" Margin="12" Padding="24" Spacing="24" HorizontalOptions="Center" VerticalOptions="Center">
+        <ActivityIndicator x:Name="loading"  IsRunning="true" Color="White"/>
+        <Label Text="  Loading..." FontSize="20" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </StackLayout>
+</pages:PopupPage>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  x:Class="Notes.PopupLogin">
+
+    <StackLayout WidthRequest="300" Margin="12" Padding="24" Spacing="24" HorizontalOptions="Center" VerticalOptions="Center" Background="#C9C5C5">
+        <StackLayout>
+            <Label Text="請輸入帳密" FontSize="24"></Label>
+            <Entry x:Name="Accouent" FontSize="30"></Entry>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Password" FontSize="24"></Label>
+            <Entry x:Name="Password" FontSize="30" IsPassword="True"></Entry>
+        </StackLayout>
+        <Button x:Name="Login" Text="確認" Clicked="Login_Clicked" Background="White"></Button>
+        <Button x:Name="Back" Text="返回" Clicked="Back_Clicked" Background="White"></Button>
+    </StackLayout>
+</pages:PopupPage>

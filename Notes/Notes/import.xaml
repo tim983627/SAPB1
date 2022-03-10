@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="收貨"
+             x:Class="Notes.import">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry  x:Name="ItemCode" Placeholder="請輸入商品編號" Text="" />
+            <Picker  x:Name="WhsCode" Title="請選擇收貨倉庫"  />
+            <Button Text="送出" Clicked="gotoimport" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+            <Button Text="返回" Clicked="gotomainpage" FontSize="Medium" TextColor="White" CornerRadius="10" Margin="5" Background="#1c69a5"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
